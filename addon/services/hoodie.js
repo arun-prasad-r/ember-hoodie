@@ -1,6 +1,5 @@
 /* globals Hoodie */
 import Ember from 'ember';
-
 const {
   Service,
   get,
@@ -12,7 +11,10 @@ export default Service.extend({
     this._super(...arguments);
     const appConfig = Ember.getOwner(this).application.resolveRegistration('config:environment');
     const hoodieConfig = appConfig.hoodie ? appConfig.hoodie.client : {};
-    const hoodie = new Hoodie(hoodieConfig);
+    const hoodie = new Hoodie({
+      url : appConfig.hoodie.client.url,
+      PouchDB : PouchDB
+    });
     set(this, 'hoodie', hoodie);
     // for debug only
     window.hoodie = hoodie;
