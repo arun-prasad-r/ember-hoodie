@@ -1,6 +1,5 @@
 import Ember from 'ember';
 const {
-  computed,
   get,
   inject: {
     service
@@ -59,10 +58,10 @@ export default Ember.Service.extend({
   _updateAccountProperties: function() {
     this.account.get('session').then(session => {
       let signedIn = session ? true : false;
-      this.set('isSignedIn', signedIn)
+      this.set('isSignedIn', signedIn);
     });
     this.account.get('username').then(username => {
-      this.set('username', username)
+      this.set('username', username);
     });
     this.account.get('session.invalid').then(hasInvalidSession => {
       this.set('hasInvalidSession', hasInvalidSession);
