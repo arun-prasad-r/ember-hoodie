@@ -7,6 +7,7 @@ const {
 } = Ember;
 
 export default Service.extend({
+  hoodie: null,
   init() {
     this._super(...arguments);
     const appConfig = Ember.getOwner(this).resolveRegistration('config:environment');
